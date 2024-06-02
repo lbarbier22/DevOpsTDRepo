@@ -34,8 +34,9 @@ sudo chown -R fanboy:fanboy /home/fanboy/personnages
 sudo ln -sf /home/fanboy/personnages /home/fanboy/persofanboy
 
 #13
-cp -r personnages /home/lucas/
-sudo ln -sf /home/lucas/personnages /home/lucas/perso_lucas
+name=$(whoami)
+cp -r personnages /home/$name/
+sudo ln -sf /home/$name/personnages /home/$name/perso_$name
 
 #14
 sudo apt install -y tree

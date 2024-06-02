@@ -1,34 +1,36 @@
 #!/bin/bash
 
+root_dir="${1:-.}"
+
 dossiers=(
-    "./personnages/mascottes"
-    "./personnages/super heros/femmes/cape"
-    "./personnages/super heros/femmes/sans cape"
-    "./personnages/super heros/hommes/cape"
-    "./personnages/super heros/hommes/sans cape"
-    "./personnages/super heros/femmes/cape/batgirl"
-    "./personnages/super heros/femmes/cape/wonderwoman"
-    "./personnages/super heros/femmes/sans cape/electra"
-    "./personnages/super heros/femmes/sans cape/superwoman"
+    "$root_dir/personnages/mascottes"
+    "$root_dir/personnages/super heros/femmes/cape"
+    "$root_dir/personnages/super heros/femmes/sans cape"
+    "$root_dir/personnages/super heros/hommes/cape"
+    "$root_dir/personnages/super heros/hommes/sans cape"
+    "$root_dir/personnages/super heros/femmes/cape/batgirl"
+    "$root_dir/personnages/super heros/femmes/cape/wonderwoman"
+    "$root_dir/personnages/super heros/femmes/sans cape/electra"
+    "$root_dir/personnages/super heros/femmes/sans cape/superwoman"
 )
 
 fichiers=(
-    "./personnages/mascottes/beastie"
-    "./personnages/mascottes/bibendum"
-    "./personnages/mascottes/mario"
-    "./personnages/mascottes/sonic"
-    "./personnages/super heros/hommes/cape/batman"
-    "./personnages/super heros/hommes/cape/superman"
-    "./personnages/super heros/hommes/cape/thor"
-    "./personnages/super heros/hommes/sans cape/antman"
-    "./personnages/super heros/hommes/sans cape/daredevil"
-    "./personnages/super heros/hommes/sans cape/linuxman"
-    "./personnages/super heros/hommes/sans cape/spiderman"
+    "$root_dir/personnages/mascottes/beastie"
+    "$root_dir/personnages/mascottes/bibendum"
+    "$root_dir/personnages/mascottes/mario"
+    "$root_dir/personnages/mascottes/sonic"
+    "$root_dir/personnages/super heros/hommes/cape/batman"
+    "$root_dir/personnages/super heros/hommes/cape/superman"
+    "$root_dir/personnages/super heros/hommes/cape/thor"
+    "$root_dir/personnages/super heros/hommes/sans cape/antman"
+    "$root_dir/personnages/super heros/hommes/sans cape/daredevil"
+    "$root_dir/personnages/super heros/hommes/sans cape/linuxman"
+    "$root_dir/personnages/super heros/hommes/sans cape/spiderman"
 )
 
 # Creating directories
 for dossier in "${dossiers[@]}"; do
-    mkdir -p "$dossier"
+    mkdir -p -m 775 "$dossier"
 done
 
 # Creating files
@@ -36,8 +38,9 @@ for fichier in "${fichiers[@]}"; do
     if [[ -n "$fichier" ]]; then
         echo "Creating file: $fichier"
         touch "$fichier"
+        chmod 664 "$fichier"
     fi
 done
 
 # Print the tree
-ls -lR --color=auto "./personnages"
+#ls -lR --color=auto "./personnages"
